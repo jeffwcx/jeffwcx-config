@@ -2,11 +2,18 @@
   "name": "@jeffwcx/prettier-config",
   "version": "0.1.0",
   "description": "jeffwcx's Prettier config",
+  "keywords": [
+    "Prettier",
+    "config"
+  ],
+  "license": "MIT",
+  "author": "jeffwcx <jeffwcx@icloud.com>",
+  "main": "index.js",
+  "module": "index.mjs",
+  "dependencies": {
+    "prettier-plugin-packagejson": "^2.5.0"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "main": "index.json",
-  "keywords": ["Prettier", "config"],
-  "author": "jeffwcx <jeffwcx@icloud.com>",
-  "license": "MIT"
+  }
 }

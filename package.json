@@ -1,22 +1,36 @@
 {
   "name": "@jeffwcx/config",
-  "private": "true",
   "version": "0.0.0",
-  "description": "jeffwcx's Prettier and ESLint configuration.",
-  "scripts": {
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "changeset publish"
-  },
+  "private": "true",
+  "description": "Shared configuration for jeffwcx",
   "keywords": [
     "config",
     "Prettier",
-    "ESLint"
+    "ESLint",
+    "gitignore"
   ],
-  "author": "jeffwcx <jeffwcx@icloud.com>",
   "license": "MIT",
+  "author": "jeffwcx <jeffwcx@icloud.com>",
+  "type": "module",
+  "scripts": {
+    "changeset": "changeset",
+    "format": "eslint . --cache --fix",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0 --cache",
+    "release": "changeset publish",
+    "version": "changeset version"
+  },
+  "prettier": "@jeffwcx/prettier-config",
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.1"
+    "@changesets/cli": "^2.27.1",
+    "@jeffwcx/eslint-config": "workspace:*",
+    "@jeffwcx/prettier-config": "workspace:*",
+    "@tsconfig/node-lts": "^20.1.3",
+    "@types/node": "^20.12.7",
+    "eslint": "^9.1.1",
+    "prettier": "^3.2.5",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.2"
   }
 }
