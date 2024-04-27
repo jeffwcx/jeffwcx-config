@@ -1,0 +1,12 @@
+{
+  "name": "@jeffwcx/prettier-config",
+  "version": "0.1.0",
+  "description": "jeffwcx's Prettier config",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.json",
+  "keywords": ["Prettier", "config"],
+  "author": "jeffwcx <jeffwcx@icloud.com>",
+  "license": "MIT"
+}
