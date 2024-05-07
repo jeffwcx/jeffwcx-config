@@ -130,17 +130,12 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1
     devDependencies:
-      debug:
-        specifier: ^4.3.4
-        version: 4.3.4(supports-color@8.1.1)
       oclif:
         specifier: ^4.10.2
         version: 4.10.2
       tsx:
         specifier: ^4.9.1
         version: 4.9.1
-
-  packages/license: {}
 
   packages/prettier-config:
     dependencies:
