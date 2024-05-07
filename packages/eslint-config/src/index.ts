@@ -9,7 +9,7 @@ import type { ConfigOptions } from './types';
  */
 export function config(
   config: FlatESLintConfig | FlatESLintConfig[] = [],
-  options: ConfigOptions,
+  options: ConfigOptions = {},
 ) {
   const configs = all(options);
   if (Object.keys(config).length > 0) {

@@ -10,7 +10,7 @@ export interface BaseConfig {
   prettier?: boolean;
   sort?: boolean;
   sortTsconfig?: boolean;
-  typescript: boolean;
+  typescript?: boolean;
 }
 
 export interface ConfigOptions extends BaseConfig {

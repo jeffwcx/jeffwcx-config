@@ -1,17 +1,16 @@
 {
   "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "types": ["node"],
     "allowJs": true,
     "checkJs": true,
-    "importHelpers": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "declaration": true
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
+  "include": ["packages/*/src", "packages/*/*.d.ts", "eslint.config.js"]
 }

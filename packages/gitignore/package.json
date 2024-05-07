@@ -6,6 +6,12 @@
     "generator",
     "gitignore"
   ],
+  "homepage": "https://github.com/jeffwcx/jeffwcx-config/blob/main/packages/gitignore#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffwcx/jeffwcx-config.git",
+    "directory": "packages/gitignore"
+  },
   "license": "MIT",
   "author": "jeffwcx <jeffwcx@icloud.com>",
   "type": "module",

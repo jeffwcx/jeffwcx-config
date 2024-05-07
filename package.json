@@ -9,6 +9,10 @@
     "ESLint",
     "gitignore"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffwcx/jeffwcx-config.git"
+  },
   "license": "MIT",
   "author": "jeffwcx <jeffwcx@icloud.com>",
   "type": "module",
@@ -17,6 +21,7 @@
     "format": "eslint . --cache --fix",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0 --cache",
     "release": "changeset publish",
+    "typecheck": "tsc --noEmit",
     "version": "changeset version"
   },
   "prettier": "@jeffwcx/prettier-config",

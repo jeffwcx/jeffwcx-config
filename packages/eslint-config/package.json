@@ -6,6 +6,12 @@
     "eslint",
     "config"
   ],
+  "homepage": "https://github.com/jeffwcx/jeffwcx-config/blob/main/packages/eslint-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffwcx/jeffwcx-config.git",
+    "directory": "packages/eslint-config"
+  },
   "license": "MIT",
   "author": "jeffwcx <jeffwcx@icloud.com>",
   "type": "module",
