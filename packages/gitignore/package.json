@@ -1,0 +1,66 @@
+{
+  "name": "@jeffwcx/gitignore",
+  "version": "0.1.0",
+  "description": "Generate `.gitignore` file.",
+  "keywords": [
+    "generator",
+    "gitignore"
+  ],
+  "license": "MIT",
+  "author": "jeffwcx <jeffwcx@icloud.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./index/index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "gi": "./bin/run.js",
+    "gitignore": "./bin/run.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "oclif.manifest.json"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "docs": "oclif manifest && oclif readme",
+    "gi": "tsx ./bin/dev.js",
+    "gi:debug": "env DEBUG=* tsx ./bin/dev",
+    "prepack": "pnpm build && pnpm run docs"
+  },
+  "oclif": {
+    "bin": "gi",
+    "commands": {
+      "strategy": "single",
+      "target": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@inquirer/core": "^8.1.0",
+    "@inquirer/figures": "^1.0.1",
+    "@inquirer/type": "^1.3.1",
+    "@oclif/core": "^3.26.6",
+    "@oclif/plugin-update": "^4.2.9",
+    "ansi-escapes": "^7.0.0",
+    "chalk": "^5.3.0",
+    "fuse.js": "^7.0.0",
+    "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "oclif": "^4.10.2",
+    "tsx": "^4.9.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

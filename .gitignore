@@ -200,4 +200,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# oclif
+oclif.manifest.json
+
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,windows

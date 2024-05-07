@@ -23,7 +23,8 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "prepack": "pnpm build"
   },
   "dependencies": {
     "@types/eslint-config-prettier": "^6.11.3",
