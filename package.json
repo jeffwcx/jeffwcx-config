@@ -22,7 +22,7 @@
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0 --cache",
     "release": "changeset publish",
     "typecheck": "tsc --noEmit",
-    "version": "changeset version"
+    "version-pkg": "changeset version"
   },
   "prettier": "@jeffwcx/prettier-config",
   "devDependencies": {

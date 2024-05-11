@@ -4,8 +4,8 @@ import process from 'node:process';
 import { Args, Command, Flags } from '@oclif/core';
 import ora, { type Ora } from 'ora';
 import Fuse from 'fuse.js';
+import { type SelectOption, select } from 'inquirer-select-pro';
 import { generateGitignore, getTemplates } from './api';
-import { type Choice, select } from './select';
 
 const CWD = process.cwd();
 
@@ -44,27 +44,28 @@ export class Gitignore extends Command {
       spinner = ora({
         text: 'Getting list of OS/IDEs/PLs...',
       }).start();
-      let choices: Choice<string>[] | undefined;
-      let fuse: Fuse<Choice<string>> | undefined;
+      let options: SelectOption<string>[];
+      let fuse: Fuse<SelectOption<string>> | undefined;
       try {
         spinner.stop();
         envNameList = await select({
           message: 'Choose your OS, IDE, PL, etc.',
           required: true,
-          source: async (input = '') => {
-            if (!choices) {
+          clearInputWhenSelected: true,
+          options: async (input = '') => {
+            if (!options) {
               try {
                 const templates = await getTemplates();
-                choices = templates.map((t) => ({ name: t, value: t }));
+                options = templates.map((t) => ({ name: t, value: t }));
               } catch (error) {
                 throw new Error('Failed to get OS/IDEs/PLs list');
               }
-              fuse = new Fuse(choices!, {
+              fuse = new Fuse(options, {
                 keys: ['value'],
                 includeScore: true,
               });
             }
-            if (!input) return choices;
+            if (!input) return options;
             if (fuse) {
               const result = fuse.search(input).map(({ item }) => item);
               return result;

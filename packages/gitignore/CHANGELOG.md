@@ -1,5 +1,11 @@
 # @jeffwcx/gitignore
 
+## 0.2.0
+
+### Minor Changes
+
+- use inquirer-select-pro
+
 ## 0.1.2
 
 ### Patch Changes
