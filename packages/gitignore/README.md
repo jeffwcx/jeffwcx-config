@@ -2,6 +2,8 @@
 
 Generate `.gitignore` file, using [gitignore.io](https://docs.gitignore.io/use/api)
 
+[![asciicast](https://asciinema.org/a/658848.svg)](https://asciinema.org/a/658848)
+
 # Usage
 
 ```bash
@@ -10,10 +12,17 @@ $ npm install -g @jeffwcx/gitignore
 $ gi
 ```
 
+or
+
+```
+npx @jeffwcx/gitignore
+```
+
 # Commands
 
   <!-- commands -->
-* [`gi [ENVNAMES]`](#gi-envnames)
+
+- [`gi [ENVNAMES]`](#gi-envnames)
 
 ## `gi [ENVNAMES]`
 
@@ -42,4 +51,5 @@ EXAMPLES
 
     $ gi macos,windows,linux,node
 ```
+
 <!-- commandsstop -->

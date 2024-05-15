@@ -1,16 +1,17 @@
 {
-  "name": "@jeffwcx/gitignore",
-  "version": "0.2.0",
-  "description": "Generate `.gitignore` file.",
+  "name": "@jeffwcx/license",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Generate license file.",
   "keywords": [
     "generator",
     "gitignore"
   ],
-  "homepage": "https://github.com/jeffwcx/jeffwcx-config/blob/main/packages/gitignore#readme",
+  "homepage": "https://github.com/jeffwcx/jeffwcx-config/blob/main/packages/license#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jeffwcx/jeffwcx-config.git",
-    "directory": "packages/gitignore"
+    "directory": "packages/license"
   },
   "license": "MIT",
   "author": "jeffwcx <jeffwcx@icloud.com>",
@@ -25,40 +26,40 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "gi": "./bin/run.js",
-    "gitignore": "./bin/run.js"
+    "lic": "./bin/run.js",
+    "license": "./bin/run.js"
   },
   "files": [
     "bin",
     "dist",
+    "license-list-data/json",
     "oclif.manifest.json"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "docs": "oclif manifest && oclif readme",
-    "gi": "tsx ./bin/dev.js",
-    "gi:debug": "env DEBUG=* tsx ./bin/dev",
+    "lic": "tsx ./bin/dev.js",
+    "lic:debug": "env DEBUG=* tsx ./bin/dev",
     "prepack": "pnpm build && pnpm run docs"
   },
   "oclif": {
-    "bin": "gi",
+    "bin": "lic",
     "commands": {
       "strategy": "single",
       "target": "./dist/index.js"
     }
   },
   "dependencies": {
+    "@inquirer/figures": "^1.0.1",
     "@oclif/core": "^3.26.6",
-    "@oclif/plugin-update": "^4.2.9",
-    "fuse.js": "^7.0.0",
-    "inquirer-select-pro": "1.0.0-alpha.3",
+    "chalk": "^5.3.0",
+    "find-up": "^7.0.0",
+    "flexsearch": "^0.7.43",
+    "inquirer-select-pro": "1.0.0-alpha.4",
     "ora": "^8.0.1"
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
