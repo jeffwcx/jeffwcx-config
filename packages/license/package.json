@@ -1,6 +1,6 @@
 {
   "name": "@jeffwcx/license",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate license file.",
   "keywords": [
     "generator",
