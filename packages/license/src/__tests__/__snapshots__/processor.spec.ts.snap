@@ -1,0 +1,181 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`license processor > Format: "[]" 1`] = `
+"License
+with the fields enclosed by brackets "[]" replaced with your own identifying information.
+    Copyright 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: <Asset Name> Copyright <Year> <Asset Owner> 1`] = `
+"License
+<Asset Name> Copyright 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: <Copyright Information> 1`] = `"<Copyright Information>"`;
+
+exports[`license processor > Format: <ORGANIZATION> ("<OWNER>") 1`] = `
+"License
+
+     a.  in the case of in the case of <ORGANIZATION> ("jeff"), the Original Program, and
+Content"
+`;
+
+exports[`license processor > Format: <copyright notice> 1`] = `"<copyright notice>"`;
+
+exports[`license processor > Format: [ Copyleft Attitude ] 1`] = `"[ Copyleft Attitude ]"`;
+
+exports[`license processor > Format: [SOFTWARE NAME] Copyright (YEAR) (COPYRIGHT HOLDER(S)/AUTHOR(S))(“Licensor”) 1`] = `
+"License
+xxxxx Copyright 2024 jeff(“Licensor”)
+Content"
+`;
+
+exports[`license processor > Format: [name of library] 1`] = `
+"License
+If you modify this Program, or any covered work, by linking or combining it with xxxxx
+Content"
+`;
+
+exports[`license processor > Format: Copyright (C) [dates of first publication] 1`] = `
+"License
+Copyright (C) 2024 Silicon Graphics, Inc. All Rights Reserved.
+Content"
+`;
+
+exports[`license processor > Format: Copyright (C) 1994, 1995, 1997, 1998, 1999. All rights reserved. 1`] = `
+"License
+Copyright (C) 1994, 1995, 1997, 1998, 1999 Aladdin Enterprises, Menlo Park, California, U.S.A. All rights reserved.
+Content"
+`;
+
+exports[`license processor > Format: Copyright (C) YEAR by AUTHOR EMAIL 1`] = `
+"License
+Copyright (C) 2024 by jeff xxxx@xxx.com
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) (CopyrightHoldersName) (From 4-digit-year)-(To 4-digit-year) 1`] = `
+"License
+Copyright (c) jeff 2024-present
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) <YEAR> <COPYRIGHT HOLDERS> 1`] = `
+"License
+Copyright (c) 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) <Year> <Owner Organization Name>  <Name of Development Group> <Name of Institution> 1`] = `
+"License
+Copyright (c) 2024 <Owner Organization Name>. All rights reserved.
+
+Developed by: <Name of Development Group> <Name of Institution> <URL for Development Group/Institution>
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) <year> <copyright holders> 1`] = `
+"License
+Copyright (c) 2024 jeff
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) <year> <owner> 1`] = `
+"License
+Copyright (c) 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) [2019] [name of copyright holder] 1`] = `
+"License
+Copyright (c) 2024 jeff
+xxxxx is licensed under the Mulan PSL v1.0
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) [Years] [name of copyright holder] 1`] = `
+"License
+Copyright (c) 2024 jeff
+
+xxxxx is licensed under Mulan PSL v2.0
+
+Copyright (c) 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) [xxxx]-[xxxx] [Owner Organization] 1`] = `
+"License
+Copyright (c) 2024-present [Owner Organization]
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) [year] [copyright holders] 1`] = `
+"License
+Copyright (c) 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright (c) year copyright holder 1`] = `
+"License
+Copyright (c) 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright <2019> <2024> 1`] = `
+"License
+Copyright 2024 present The Open Group
+Content"
+`;
+
+exports[`license processor > Format: Copyright <2019-2024> 1`] = `
+"License
+Copyright 2024-present The Open Group
+Content"
+`;
+
+exports[`license processor > Format: Copyright <2020,2024> 1`] = `
+"License
+Copyright 2024,present The Open Group
+Content"
+`;
+
+exports[`license processor > Format: Copyright <YEAR> <COPYRIGHT HOLDER> 1`] = `
+"License
+Copyright 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright <year> <copyright holder> 1`] = `
+"License
+Copyright 2024 jeff
+Content"
+`;
+
+exports[`license processor > Format: Copyright <yyyy, yyyy> The Open Group 1`] = `
+"License
+Copyright 2024, present The Open Group
+Content"
+`;
+
+exports[`license processor > Format: Copyright [YEAR] [NAME] [EMAIL] 1`] = `
+"License
+Copyright 2024 jeff xxxx@xxx.com
+Content"
+`;
+
+exports[`license processor > Format: Copyright © <YEAR> <HOLDERS> <PRODUCT> 1`] = `
+"License
+Copyright © 2024 jeff <PRODUCT>
+Content"
+`;
+
+exports[`license processor > Format: Copyright © 2018 MongoDB, Inc. 1`] = `
+"License
+                    VERSION 1, OCTOBER 16, 2018
+
+  Copyright © 2018 MongoDB, Inc.
+Content"
+`;

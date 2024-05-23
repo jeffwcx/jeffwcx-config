@@ -10,6 +10,5 @@ export default defineConfig([
     treeshake: true,
     dts: true,
     sourcemap: true,
-    shims: true,
   },
 ]);

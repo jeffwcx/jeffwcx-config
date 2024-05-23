@@ -1,5 +1,7 @@
 import { readFile } from 'node:fs/promises';
-import { findUp } from 'find-up';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import flexsearch, { type SimpleDocumentSearchResultSetUnit } from 'flexsearch';
 const { Document } = flexsearch;
 
@@ -15,6 +17,16 @@ export interface ILicense {
   isFsfLibre?: boolean;
 }
 
+export interface ILicenseDetail {
+  isDeprecatedLicenseId: boolean;
+  licenseText: string;
+  standardLicenseTemplate?: string;
+  name: string;
+  licenseComments: string;
+  licenseId: string;
+  licenseTextHtml: string;
+}
+
 export interface LicenseList {
   releaseDate: string;
   licenseListVersion: string;
@@ -23,7 +35,10 @@ export interface LicenseList {
 
 let licenses: IndexedLicense[] | null = null;
 
-async function getLicensesByNetwork() {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dataPath = path.resolve(__dirname, '../license-list-data/json');
+
+async function getRemoteLicenses() {
   const res = await fetch('https://spdx.org/licenses/licenses.json');
   if (!res.ok) {
     throw new Error('Fail to get license list.');
@@ -31,15 +46,20 @@ async function getLicensesByNetwork() {
   return (await res.json()) as LicenseList;
 }
 
+export async function getLocalLicense(licenseId: string) {
+  const licensePath = path.resolve(dataPath, `./details/${licenseId}.json`);
+  const jsonstr = await readFile(licensePath, { encoding: 'utf-8' });
+  return JSON.parse(jsonstr) as ILicenseDetail;
+}
+
 export type IndexedLicense = ILicense & {
   tag: string[];
   popularity: number;
-  fuzzy: string[];
+  keyword: string[];
 };
 
 const licIndex = new Document<IndexedLicense>({
   optimize: true,
-  cache: true,
   tokenize: 'reverse',
   document: {
     id: 'licenseId',
@@ -56,7 +76,7 @@ const licIndex = new Document<IndexedLicense>({
         tokenize: 'reverse',
       },
       {
-        field: 'fuzzy[]',
+        field: 'keyword[]',
         resolution: 5,
         tokenize: 'full',
       },
@@ -85,7 +105,6 @@ export const wellKnownLicenses: Record<string, number> = {
   'BSL-1.0': 8200,
   'Artistic-2.0': 8100,
   'LPPL-1.3c': 8000,
-  'MIT-0': 7900,
   'MS-PL': 7800,
   'MS-RL': 7700,
   'MulanPSL-2.0': 7600,
@@ -140,7 +159,7 @@ function indexedLicences(orginData: ILicense[]) {
       ...lic,
       tag: [],
       popularity: 0,
-      fuzzy: [],
+      keyword: [],
     };
     const p = wellKnownLicenses[lic.licenseId];
     if (p) {
@@ -149,12 +168,12 @@ function indexedLicences(orginData: ILicense[]) {
     }
     if (lic.isOsiApproved) {
       indexedLic.tag.push(TAGS.OSI);
-      indexedLic.fuzzy.push(TAGS.OSI);
+      indexedLic.keyword.push(TAGS.OSI);
       indexedLic.popularity += 50;
     }
     if (lic.isFsfLibre) {
       indexedLic.tag.push(TAGS.FSF);
-      indexedLic.fuzzy.push(TAGS.FSF);
+      indexedLic.keyword.push(TAGS.FSF);
       indexedLic.popularity += 41;
     }
     const [, tag] =
@@ -162,12 +181,12 @@ function indexedLicences(orginData: ILicense[]) {
     if (tag && tagMap[tag]) {
       const [t, p] = tagMap[tag];
       indexedLic.tag.push(t);
-      indexedLic.fuzzy.push(t);
+      indexedLic.keyword.push(t);
       indexedLic.popularity += p;
     }
     const regex = /v?([\d]\.[\d])(\+)?/i;
     const [, version, plus] = lic.licenseId.match(regex) || [];
-    indexedLic.fuzzy.unshift(lic.licenseId.replace('-', ''));
+    indexedLic.keyword.unshift(lic.licenseId.replace('-', ''));
     if (version) {
       const v = +version;
       if (!isNaN(v)) {
@@ -212,11 +231,11 @@ function search(
   { limit, field, tags, append, bool }: SearchOptions = {
     limit: 50,
     append: true,
-    bool: 'and',
+    bool: 'or',
   },
 ) {
   let tag: TAGS[] = [TAGS.AVAILABLE];
-  const index = field ?? ['name', 'seeAlso[]', 'fuzzy[]'];
+  const index = field ?? ['name', 'seeAlso[]', 'keyword[]'];
   if (tags) {
     if (append) {
       tag.push(...tags);
@@ -244,24 +263,49 @@ function search(
 }
 
 export interface GetLicencesOptions extends SearchOptions {
-  network?: boolean;
+  remote?: boolean;
 }
 
 export async function getLicences(
   keyword?: string,
-  { network, ...searchOptions }: GetLicencesOptions = { network: false },
+  { remote, ...searchOptions }: GetLicencesOptions = { remote: false },
 ) {
   if (licenses) {
-    return search(keyword);
+    return search(keyword, searchOptions);
   }
-  const licencesFilePath = !network ? await findUp('licenses.json') : '';
+  const licencesFilePath = !remote
+    ? path.join(dataPath, './licenses.json')
+    : '';
   let orginData: ILicense[];
   if (!licencesFilePath) {
-    orginData = (await getLicensesByNetwork()).licenses;
+    orginData = (await getRemoteLicenses()).licenses;
   } else {
     const file = await readFile(licencesFilePath, { encoding: 'utf-8' });
     orginData = JSON.parse(file).licenses as ILicense[];
   }
   indexedLicences(orginData);
   return search(keyword, searchOptions);
+}
+
+function git(...args: string[]) {
+  return new Promise<string>((resolve, reject) => {
+    const result = spawnSync('git', args, {
+      windowsHide: true,
+      encoding: 'utf-8',
+      maxBuffer: 10 * 1024 * 1024,
+    });
+    if (result.status !== 0) {
+      reject(result.error);
+    } else {
+      resolve(result.stdout.trim());
+    }
+  });
+}
+
+export async function getGitInfo() {
+  const [author, email] = await Promise.all([
+    git('config', 'user.name'),
+    git('config', 'user.email'),
+  ]);
+  return { author, email };
 }

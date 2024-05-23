@@ -1,4 +1,3 @@
 {
-  "editor.formatOnSave": true,
-  "commentTranslate.targetLanguage": "en"
+  "editor.formatOnSave": true
 }
