@@ -31,7 +31,7 @@
   "files": [
     "bin",
     "dist",
-    "license-list-data/json",
+    "license-list-data/json/licenses.json",
     "oclif.manifest.json"
   ],
   "scripts": {

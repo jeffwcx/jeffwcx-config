@@ -13,7 +13,7 @@ import {
   TAGS,
   getGitInfo,
   getLicences,
-  getLocalLicense,
+  getRemoteDetailLicense,
 } from './api';
 import { LicenseProcessor } from './processor';
 
@@ -185,7 +185,17 @@ export class License extends Command {
         : path.resolve(CWD, flags.file);
       const fileName = basename(filePath);
 
-      const { licenseText } = await getLocalLicense(targetLicense.licenseId);
+      const spinner = ora({
+        text: `Get details of the license "${targetLicense.licenseId}"...`,
+      }).start();
+
+      const { licenseText } = await getRemoteDetailLicense(
+        targetLicense.detailsUrl,
+      );
+
+      spinner.succeed(
+        `Details of the license "${targetLicense.licenseId}" are obtained.`,
+      );
 
       const renderArgs: Record<string, string> = await getGitInfo();
       renderArgs.fromYear = new Date().getFullYear().toString();
@@ -202,7 +212,10 @@ export class License extends Command {
           }
         }
       }
-      const spinner = ora({ text: `Generating \`${fileName}\`` }).start();
+
+      spinner.text = `Generating \`${fileName}\``;
+      spinner.start();
+
       const license = processor.render(renderArgs);
       try {
         await writeFile(filePath, license, { encoding: 'utf-8' });

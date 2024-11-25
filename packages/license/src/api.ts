@@ -46,6 +46,14 @@ async function getRemoteLicenses() {
   return (await res.json()) as LicenseList;
 }
 
+export async function getRemoteDetailLicense(detailUrl: string) {
+  const res = await fetch(detailUrl);
+  if (!res.ok) {
+    throw new Error('Fail to get license detail.');
+  }
+  return (await res.json()) as ILicenseDetail;
+}
+
 export async function getLocalLicense(licenseId: string) {
   const licensePath = path.resolve(dataPath, `./details/${licenseId}.json`);
   const jsonstr = await readFile(licensePath, { encoding: 'utf-8' });
