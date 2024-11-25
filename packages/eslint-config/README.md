@@ -1,5 +1,7 @@
 # @jeffwcx/eslint-config
 
+👉 inspector: [eslint-config.jeffwcx.me](https://eslint-config.jeffwcx.me)
+
 ## Features
 
 - Format with Prettier
@@ -8,6 +10,8 @@
   - Import Statement sort
   - package.json sort
   - tsconfig.json sort
+- Framework support
+  - Astro
 
 ## Usage
 
