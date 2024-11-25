@@ -51,6 +51,7 @@ export class Gitignore extends Command {
         envNameList = await select({
           message: 'Choose your OS, IDE, PL, etc.',
           required: true,
+          confirmDelete: true,
           clearInputWhenSelected: true,
           options: async (input = '') => {
             if (!options) {

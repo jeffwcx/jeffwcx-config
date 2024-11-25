@@ -52,7 +52,7 @@
     "@oclif/core": "^3.26.6",
     "@oclif/plugin-update": "^4.2.9",
     "fuse.js": "^7.0.0",
-    "inquirer-select-pro": "1.0.0-alpha.3",
+    "inquirer-select-pro": "1.0.0-alpha.8",
     "ora": "^8.0.1"
   },
   "engines": {
