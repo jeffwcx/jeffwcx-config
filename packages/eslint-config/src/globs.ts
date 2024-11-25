@@ -40,6 +40,15 @@ export const GLOB_LOCKFILE = [
   '**/pnpm-lock.yaml',
   '**/bun.lockb',
 ];
+
+export const GLOB_TESTS = [
+  `**/__tests__/**/*.${GLOB_SRC_EXT}`,
+  `**/*.spec.${GLOB_SRC_EXT}`,
+  `**/*.test.${GLOB_SRC_EXT}`,
+  `**/*.bench.${GLOB_SRC_EXT}`,
+  `**/*.benchmark.${GLOB_SRC_EXT}`,
+];
+
 export const GLOB_EXCLUDE = [
   GLOB_NODE_MODULES,
   GLOB_DIST,

@@ -2,7 +2,6 @@ import type { FlatESLintConfig } from 'eslint-define-config';
 
 export interface BaseConfig {
   comments?: boolean;
-  ignores?: boolean;
   imports?: boolean;
   javascript?: boolean;
   jsonc?: boolean;
@@ -11,6 +10,14 @@ export interface BaseConfig {
   sort?: boolean;
   sortTsconfig?: boolean;
   typescript?: boolean;
+  test?: boolean;
+}
+
+export interface BaseFiles {
+  jsonc?: string[];
+  test?: string[];
+  typescript?: string[];
+  sortTsconfig?: string[];
 }
 
 export interface ConfigOptions extends BaseConfig {
@@ -19,11 +26,26 @@ export interface ConfigOptions extends BaseConfig {
    */
   gitignore?: boolean;
   /**
-   * Configuration override
+   * user's ignore files
    */
-  overrides?: { [k in keyof BaseConfig]?: FlatESLintConfig[] };
+  userIgnores?: string[];
+  /**
+   * Configuration rules override
+   */
+  overrides?: { [k in keyof BaseConfig]?: FlatESLintConfig['rules'] };
+  /**
+   * Configuration files rewrite
+   */
+  files?: { [k in keyof BaseFiles]?: FlatESLintConfig['files'] };
 }
 
-export type DefineConfig = (
-  options: Required<ConfigOptions>,
-) => FlatESLintConfig[];
+export type DefineConfigOptions = Required<
+  Omit<ConfigOptions, 'overrides' | 'files'>
+> & {
+  overrides: FlatESLintConfig['rules'];
+  files: FlatESLintConfig['files'];
+};
+
+export type DefineConfig = (options: DefineConfigOptions) => FlatESLintConfig[];
+
+export type Preset = (options: ConfigOptions) => FlatESLintConfig[];

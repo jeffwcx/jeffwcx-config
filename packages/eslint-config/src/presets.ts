@@ -1,5 +1,6 @@
 import {
   comments,
+  disables,
   ignores,
   imports,
   javascript,
@@ -7,29 +8,40 @@ import {
   node,
   prettier,
   sortTsconfig,
+  test,
   typescript,
 } from './configs';
 import { createPreset } from './utils';
 
-export const presetJavaScript = createPreset([
+export const presetJavaScript = createPreset({
   ignores,
   javascript,
   comments,
   imports,
   node,
-]);
+});
 
-export const presetJsonc = createPreset([jsonc, sortTsconfig]);
+export const presetJsonc = createPreset({
+  jsonc,
+  sortTsconfig,
+});
 
-export const presetBasic = createPreset([
+export const presetBasic = createPreset({
   ignores,
   javascript,
   comments,
   imports,
   node,
   typescript,
-]);
+  test,
+  disables,
+});
 
-export const presetAll = createPreset([presetBasic, presetJsonc, prettier]);
+export const presetAll = createPreset(
+  {
+    prettier,
+  },
+  [presetBasic, presetJsonc],
+);
 
 export { presetBasic as basic, presetAll as all };

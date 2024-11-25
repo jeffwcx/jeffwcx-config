@@ -21,6 +21,13 @@ export default config(
   {
     prettier: true,
     gitignore: true,
+    userIgnores: [], // add self defined ignore files
+    overrides: {
+      typescript: {}, // overrides typescript lint rules
+    },
+    files: {
+      test: [], // self defined `tests` glob
+    },
   },
 );
 ```

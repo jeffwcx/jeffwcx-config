@@ -1,14 +1,12 @@
 import type { DefineConfig } from '../types';
 
-export const sortTsconfig: DefineConfig = ({
-  sort,
-  sortTsconfig: enable,
-  overrides,
-}) => {
-  if (!sort || !enable) return [];
+export const sortTsconfig: DefineConfig = (options) => {
+  const { overrides, files = ['**/tsconfig.json', '**/tsconfig.*.json'] } =
+    options;
   return [
     {
-      files: ['**/tsconfig.json', '**/tsconfig.*.json'],
+      files,
+      name: 'jeffwcx/sort-tsconfig',
       rules: {
         'jsonc/sort-keys': [
           'error',
@@ -125,8 +123,8 @@ export const sortTsconfig: DefineConfig = ({
             pathPattern: '^compilerOptions$',
           },
         ],
+        ...overrides,
       },
     },
-    ...(overrides.sortTsconfig || []),
   ];
 };

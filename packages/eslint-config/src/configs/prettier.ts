@@ -9,10 +9,10 @@ const pluginPrettier = interopDefault(_pluginPrettier);
 const prettierConflictRules = { ...configPrettier.rules };
 delete prettierConflictRules['vue/html-self-closing'];
 
-export const prettier: DefineConfig = ({ prettier: enable, overrides }) => {
-  if (!enable) return [];
+export const prettier: DefineConfig = ({ overrides }) => {
   return [
     {
+      name: 'jeffwcx/prettier',
       plugins: {
         prettier: pluginPrettier,
       },
@@ -20,8 +20,8 @@ export const prettier: DefineConfig = ({ prettier: enable, overrides }) => {
         ...prettierConflictRules,
         ...pluginPrettier.configs.recommended.rules,
         'prettier/prettier': 'warn',
+        ...overrides,
       },
     },
-    ...(overrides.prettier || []),
   ];
 };

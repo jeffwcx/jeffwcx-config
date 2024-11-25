@@ -3,10 +3,10 @@ import { interopDefault } from '../utils';
 import type { DefineConfig } from '../types';
 const pluginComments: any = interopDefault(_pluginComments);
 
-export const comments: DefineConfig = ({ comments: enable, overrides }) => {
-  if (!enable) return [];
+export const comments: DefineConfig = ({ overrides }) => {
   return [
     {
+      name: 'jeffwcx/comments',
       plugins: {
         'eslint-comments': pluginComments,
       },
@@ -16,8 +16,8 @@ export const comments: DefineConfig = ({ comments: enable, overrides }) => {
           'error',
           { allowWholeFile: true },
         ],
+        ...overrides,
       },
     },
-    ...(overrides.comments || []),
   ];
 };

@@ -1,10 +1,10 @@
 import pluginImport from 'eslint-plugin-import-x';
 import type { DefineConfig } from '../types';
 
-export const imports: DefineConfig = ({ imports: enable, overrides }) => {
-  if (!enable) return [];
+export const imports: DefineConfig = ({ overrides }) => {
   return [
     {
+      name: 'jeffwcx/imports',
       plugins: {
         import: pluginImport,
       },
@@ -30,8 +30,8 @@ export const imports: DefineConfig = ({ imports: enable, overrides }) => {
             pathGroups: [{ group: 'internal', pattern: '{{@,~}/,#}**' }],
           },
         ],
+        ...overrides,
       },
     },
-    ...(overrides.imports || []),
   ];
 };

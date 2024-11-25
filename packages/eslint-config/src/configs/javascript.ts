@@ -5,10 +5,10 @@ import type { DefineConfig } from '../types';
 
 export const restrictedSyntaxJs = ['LabeledStatement', 'WithStatement'];
 
-export const javascript: DefineConfig = ({ javascript: enable, overrides }) => {
-  if (!enable) return [];
+export const javascript: DefineConfig = ({ overrides }) => {
   return [
     {
+      name: 'jeffwcx/js',
       languageOptions: {
         globals: {
           ...globals.browser,
@@ -147,19 +147,7 @@ export const javascript: DefineConfig = ({ javascript: enable, overrides }) => {
         'vars-on-top': 'error',
         'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
       },
+      ...overrides,
     },
-    {
-      files: ['**/scripts/*', '**/cli.*'],
-      rules: {
-        'no-console': 'off',
-      },
-    },
-    {
-      files: ['**/*.{test,spec}.js?(x)'],
-      rules: {
-        'no-unused-expressions': 'off',
-      },
-    },
-    ...(overrides.javascript || []),
   ];
 };

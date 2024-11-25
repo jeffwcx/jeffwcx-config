@@ -5,20 +5,23 @@ import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../globs';
 import type { Rules } from 'eslint-define-config';
 import type { DefineConfig } from '../types';
 
-export const jsonc: DefineConfig = ({ jsonc: enable, overrides }) => {
-  if (!enable) return [];
+export const jsonc: DefineConfig = (options) => {
+  const { overrides, files = [GLOB_JSON, GLOB_JSON5, GLOB_JSONC] } = options;
   return [
     {
-      files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
+      name: 'jeffwcx/jsonc',
+      files,
       languageOptions: {
         parser: parserJsonc,
       },
       plugins: {
         jsonc: pluginJsonc,
       },
-      rules: pluginJsonc.configs['recommended-with-jsonc']
-        .rules as unknown as Rules,
+      rules: {
+        ...(pluginJsonc.configs['recommended-with-jsonc']
+          .rules as unknown as Rules),
+        ...overrides,
+      },
     },
-    ...(overrides.jsonc || []),
   ];
 };

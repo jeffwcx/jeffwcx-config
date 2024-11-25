@@ -203,4 +203,6 @@ $RECYCLE.BIN/
 # oclif
 oclif.manifest.json
 
+.eslint-config-inspector
+
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,windows

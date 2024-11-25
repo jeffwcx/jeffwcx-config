@@ -3,10 +3,10 @@ import { interopDefault } from '../utils';
 import type { DefineConfig } from '../types';
 const pluginNode = interopDefault(_pluginNode);
 
-export const node: DefineConfig = ({ node: enable, overrides }) => {
-  if (!enable) return [];
+export const node: DefineConfig = ({ overrides }) => {
   return [
     {
+      name: 'jeffwcx/node',
       plugins: {
         node: pluginNode,
       },
@@ -20,8 +20,8 @@ export const node: DefineConfig = ({ node: enable, overrides }) => {
         'node/prefer-global/buffer': ['error', 'never'],
         'node/prefer-global/process': ['error', 'never'],
         'node/process-exit-as-throw': 'error',
+        ...overrides,
       },
     },
-    ...(overrides.node || []),
   ];
 };

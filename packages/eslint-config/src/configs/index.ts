@@ -7,3 +7,5 @@ export * from './comments';
 export * from './jsonc';
 export * from './ignores';
 export * from './sort';
+export * from './disables';
+export * from './test';
