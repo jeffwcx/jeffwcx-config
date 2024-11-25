@@ -9,3 +9,4 @@ export * from './ignores';
 export * from './sort';
 export * from './disables';
 export * from './test';
+export * from './astro';

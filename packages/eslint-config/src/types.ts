@@ -11,6 +11,7 @@ export interface BaseConfig {
   sortTsconfig?: boolean;
   typescript?: boolean;
   test?: boolean;
+  astro?: boolean;
 }
 
 export interface BaseFiles {
@@ -18,6 +19,7 @@ export interface BaseFiles {
   test?: string[];
   typescript?: string[];
   sortTsconfig?: string[];
+  astro?: boolean;
 }
 
 export interface ConfigOptions extends BaseConfig {

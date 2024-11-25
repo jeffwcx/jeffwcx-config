@@ -1,4 +1,5 @@
 import {
+  astro,
   comments,
   disables,
   ignores,
@@ -40,6 +41,7 @@ export const presetBasic = createPreset({
 export const presetAll = createPreset(
   {
     prettier,
+    astro,
   },
   [presetBasic, presetJsonc],
 );
