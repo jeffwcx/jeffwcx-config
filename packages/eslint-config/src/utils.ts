@@ -42,6 +42,7 @@ const defineConfigOptions: Required<ConfigOptions> = {
   typescript: true,
   test: true,
   files: {},
+  astro: false,
 };
 
 export function transformOptions(options: ConfigOptions) {

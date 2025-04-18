@@ -15,7 +15,7 @@ export const imports: DefineConfig = ({ overrides }) => {
         'import/no-webpack-loader-syntax': 'error',
         'import/first': 'error',
         'import/order': [
-          'error',
+          'warn',
           {
             groups: [
               'builtin',
