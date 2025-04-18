@@ -1,5 +1,11 @@
 # @jeffwcx/eslint-config
 
+## 0.5.0
+
+### Minor Changes
+
+- [`7191eeb`](https://github.com/jeffwcx/jeffwcx-config/commit/7191eeb6aa35aeca317d01bb5bbbbc64223ac6dd) Thanks [@jeffwcx](https://github.com/jeffwcx)! - rule of `import/order` should set to `warn` level
+
 ## 0.4.0
 
 ### Minor Changes
