@@ -1,12 +1,13 @@
 import pluginImport from 'eslint-plugin-import-x';
 import type { DefineConfig } from '../types';
+import type { ESLint } from 'eslint';
 
 export const imports: DefineConfig = ({ overrides }) => {
   return [
     {
       name: 'jeffwcx/imports',
       plugins: {
-        import: pluginImport,
+        import: pluginImport as unknown as ESLint.Plugin,
       },
       rules: {
         'import/export': 'error',

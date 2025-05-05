@@ -1,5 +1,5 @@
 import globals from 'globals';
-import * as pluginUnusedImports from 'eslint-plugin-unused-imports';
+import pluginUnusedImports from 'eslint-plugin-unused-imports';
 import { isInEditor } from '../utils';
 import type { DefineConfig } from '../types';
 

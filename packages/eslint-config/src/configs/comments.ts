@@ -1,6 +1,7 @@
 import * as _pluginComments from 'eslint-plugin-eslint-comments';
 import { interopDefault } from '../utils';
 import type { DefineConfig } from '../types';
+
 const pluginComments: any = interopDefault(_pluginComments);
 
 export const comments: DefineConfig = ({ overrides }) => {

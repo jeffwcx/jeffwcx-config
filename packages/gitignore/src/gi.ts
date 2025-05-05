@@ -59,7 +59,9 @@ export class Gitignore extends Command {
                 const templates = await getTemplates();
                 options = templates.map((t) => ({ name: t, value: t }));
               } catch (error) {
-                throw new Error('Failed to get OS/IDEs/PLs list');
+                throw new Error('Failed to get OS/IDEs/PLs list', {
+                  cause: (error as Error).cause,
+                });
               }
               fuse = new Fuse(options, {
                 keys: ['value'],
