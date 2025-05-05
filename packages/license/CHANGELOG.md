@@ -1,5 +1,11 @@
 # @jeffwcx/license
 
+## 0.3.0
+
+### Minor Changes
+
+- [`02b51cd`](https://github.com/jeffwcx/jeffwcx-config/commit/02b51cd44c1ac2bf8855e0b05fc48ef459e8c381) Thanks [@jeffwcx](https://github.com/jeffwcx)! - update deps of eslint-config
+
 ## 0.2.0
 
 ### Minor Changes
