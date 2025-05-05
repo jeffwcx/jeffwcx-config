@@ -1,8 +1,8 @@
-import { DefineConfig } from '../types';
 import pluginAstro from 'eslint-plugin-astro';
 import parserAstro from 'astro-eslint-parser';
 import tseslint from 'typescript-eslint';
 import { GLOB_ASTRO } from '../globs';
+import type { DefineConfig } from '../types';
 import type { FlatESLintConfig } from 'eslint-define-config';
 
 export const astro: DefineConfig = (options) => {

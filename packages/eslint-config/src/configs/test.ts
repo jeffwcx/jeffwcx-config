@@ -1,7 +1,11 @@
 import pluginVite from '@vitest/eslint-plugin';
+// @ts-ignore
+import * as _pluginNoOnlyTests from 'eslint-plugin-no-only-tests';
+import { interopDefault, isInEditor } from '../utils';
 import { GLOB_TESTS } from '../globs';
-import { isInEditor } from '../utils';
 import type { DefineConfig } from '../types';
+
+const pluginNoOnlyTests = interopDefault(_pluginNoOnlyTests);
 
 export const test: DefineConfig = (options) => {
   const { overrides, files = GLOB_TESTS } = options;
@@ -9,7 +13,13 @@ export const test: DefineConfig = (options) => {
     {
       name: 'jeffwcx/test/setup',
       plugins: {
-        test: pluginVite,
+        test: {
+          ...pluginVite,
+          rules: {
+            ...pluginVite.rules,
+            ...pluginNoOnlyTests.rules,
+          },
+        },
       },
     },
     {
